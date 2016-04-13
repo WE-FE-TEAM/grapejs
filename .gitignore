@@ -1,7 +1,7 @@
-/.idea
-/.vscode
-node_modules/
 
+/.vscode
+/.idea
+/node_modules
 .DS_Store
 *.db
 *.bak
@@ -10,27 +10,7 @@ node_modules/
 ~*
 
 .project
-upload.py
-
-.idea/
-
-node-ui
 
 npm-debug.log
-/build
-/prebuild
-/node_modules
+
 /~*
-
-/server/public
-/server/views
-/server/log
-/server/logs
-/server/pm2log
-/server/config/server-conf/server.development.js
-
-/service/log
-/service/logs
-
-/server/test/lib/api/logs/
-logs/
