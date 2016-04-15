@@ -9,11 +9,11 @@
 class UserSetting extends grape.ControllerBase {
 
 
-    lists(){
+    listAction(){
         this.http.res.end('UserSetting.list');
     }
 
-    detail(){
+    detailAction(){
         this.http.res.end('UserSetting.detail');
     }
 }
