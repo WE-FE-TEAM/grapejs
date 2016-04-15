@@ -6,11 +6,11 @@
 
 module.exports = [
     {
-        reg : "^common\/uplan\/(\w+)",
+        match : /^common\/uplan\/(\w+)/,
         rewrite : "common/uplan/detail?id=$1"
     },
     {
-        reg : "^common\/uplan$",
+        match : "^common\/uplan$",
         rewrite : "common/uplan/list"
     }
 ];
