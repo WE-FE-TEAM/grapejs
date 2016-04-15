@@ -12,11 +12,11 @@ class IndexController extends grape.ControllerBase {
         super.init(http);
     }
 
-    list(){
+    listAction(){
         this.http.res.end('IndexController.list');
     }
 
-    detail(){
+    detailAction(){
         this.http.res.end('IndexController.detail');
     }
 
