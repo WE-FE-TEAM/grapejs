@@ -11,7 +11,8 @@ let Entrance = require('../lib/index.js');
 
 
 let app = new Entrance({
-    appPath : __dirname
+    APP_PATH : __dirname,
+    APP_URL_PREFIX : '/n'
 });
 
 
