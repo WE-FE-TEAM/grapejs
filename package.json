@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "demo:dev": "NODE_ENV=development nodemon --watch server --ignore server/log/ --ignore server/logs/ ./demo-app/index.js"
+    "demo:dev": "NODE_ENV=development nodemon --watch lib --watch demo-app --ignore server/log/ --ignore server/logs/ ./demo-app/index.js"
   },
   "author": "",
   "license": "ISC",
