@@ -6,11 +6,11 @@
 
 module.exports = [
     {
-        match : "^p2p\/uplan\/(\w+)",
-        rewrite : "p2p/uplan/detail?id=$1"
+        match : /^\/home\/user\/listAction\/id\/(\d+)/,
+        rewrite : "home/user/setting/listAction/name/we-fe?id=$1"
     },
     {
-        match : "^p2p\/uplan$",
-        rewrite : "p2p/uplan/list"
+        match : "/home/listAction/10",
+        rewrite : "home/user/setting/listAction?id=10"
     }
 ];
