@@ -12,6 +12,15 @@ module.exports = {
 
     redis : {
         kk1 : 'from demo-app/common/config/development'
+    },
+
+    log : {
+        streams : [
+            {
+                level : 'trace',
+                stream : process.stdout
+            }
+        ]
     }
 
 };

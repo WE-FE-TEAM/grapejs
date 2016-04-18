@@ -13,10 +13,12 @@ class IndexController extends grape.ControllerBase {
     }
 
     listAction(){
+        grape.log.info(`log file test`);
         this.http.res.end('IndexController.list');
     }
 
     detailAction(){
+        this.warn(`warn log in IndexController.detailAction`);
         this.http.res.end('IndexController.detail');
     }
 
