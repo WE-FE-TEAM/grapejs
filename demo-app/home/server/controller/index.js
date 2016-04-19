@@ -17,8 +17,13 @@ class IndexController extends grape.ControllerBase {
         this.http.res.end('IndexController.list');
     }
 
-    detailAction(){
-        this.warn(`warn log in IndexController.detailAction`);
+
+    async detailAction(){
+
+        let result = await this.request('fund.getFundDetail', '270004');
+
+        this.http.res.write( JSON.stringify(result) );
+
         this.http.res.end('IndexController.detail');
     }
 
