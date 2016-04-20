@@ -12,8 +12,8 @@ class IndexController extends grape.ControllerBase {
         super.init(http);
     }
 
-    listAction(){
-        grape.log.info(`log file test`);
+    async listAction(){
+        await this.request('fund.getFundDetail', '1').catch( () => {});
         this.http.res.end('IndexController.list');
     }
 
