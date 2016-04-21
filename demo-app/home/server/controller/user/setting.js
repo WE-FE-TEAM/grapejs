@@ -6,7 +6,7 @@
 'use strict';
 
 
-class UserSetting extends grape.ControllerBase {
+class UserSetting extends weDemo.ControllerBase {
 
 
     listAction(){

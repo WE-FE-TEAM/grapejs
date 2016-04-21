@@ -21,6 +21,7 @@
     "cookie-parser": "^1.4.1",
     "express": "^4.13.4",
     "fs-extra": "^0.27.0",
-    "node-ral": "^0.7.2"
+    "node-ral": "^0.7.2",
+    "swig": "^1.4.2"
   }
 }

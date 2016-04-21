@@ -21,6 +21,7 @@ module.exports = {
         ],
 
         list : [
+            'can_write',
             'check_version'
         ],
 
