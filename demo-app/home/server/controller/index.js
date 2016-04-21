@@ -6,7 +6,7 @@
 'use strict';
 
 
-class IndexController extends grape.ControllerBase {
+class IndexController extends weDemo.ControllerBase {
 
     init(http){
         super.init(http);
