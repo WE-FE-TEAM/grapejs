@@ -1,6 +1,6 @@
 {
   "name": "grapejs",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Node.js framework",
   "main": "lib/index.js",
   "scripts": {
@@ -9,9 +9,6 @@
   },
   "author": "",
   "license": "ISC",
-  "bin": {
-    "grape": "bin/grape.js"
-  },
   "dependencies": {
     "babel-core": "^6.3.21",
     "babel-plugin-transform-async-to-generator": "^6.4.6",
@@ -23,20 +20,11 @@
     "bunyan": "^1.8.0",
     "cookie-parser": "^1.4.1",
     "express": "^4.13.4",
-    "fis-parser-node-sass": "^0.1.9",
-    "fis-parser-typescript": "^0.2.2",
-    "fis3": "^3.3.29",
-    "fis3-hook-commonjs": "^0.1.15",
-    "fis3-hook-node_modules": "^2.0.19",
     "fs-extra": "^0.27.0",
-    "liftoff": "^2.2.1",
-    "minimist": "^1.2.0",
     "node-ral": "^0.7.2",
     "swig": "^1.4.2",
     "yog-bigpipe": "^0.3.0",
     "yog-swig": "^0.3.1",
-    "yog-view": "^0.5.2",
-    "yogurt-postprocessor-require-async": "0.0.3",
-    "yogurt-preprocessor-extlang": "0.0.2"
+    "yog-view": "^0.5.2"
   }
 }
