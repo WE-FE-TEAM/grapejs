@@ -1,6 +1,6 @@
 {
   "name": "grapejs",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Node.js framework",
   "main": "lib/index.js",
   "scripts": {
@@ -21,6 +21,7 @@
     "cookie-parser": "^1.4.1",
     "express": "^4.13.4",
     "fs-extra": "^0.27.0",
+    "lodash": "^4.11.1",
     "node-ral": "^0.7.2",
     "swig": "^1.4.2",
     "yog-bigpipe": "^0.3.0",

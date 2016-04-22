@@ -22,7 +22,10 @@ Object.defineProperty(global, 'weDemo', {
 
 let app = new Entrance({
     APP_PATH : __dirname,
-    APP_URL_PREFIX : '/n'
+    APP_URL_PREFIX : '/n',
+    APP_STATIC_PATH : __dirname,
+    APP_VIEW_PATH : __dirname,
+    APP_MAP_PATH : __dirname
 });
 
 
