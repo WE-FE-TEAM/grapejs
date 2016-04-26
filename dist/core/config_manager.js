@@ -106,7 +106,7 @@ config.getModuleConfig = function (module, name) {
         module = global.grapeData.defaultConfigModule;
     }
     if (module) {
-        var moduleConfig = grapeData.config[module];
+        var moduleConfig = grapeData.config[module] || {};
         if (name) {
             return moduleConfig[name] || {};
         }
