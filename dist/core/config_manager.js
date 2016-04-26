@@ -108,12 +108,12 @@ config.getModuleConfig = function (module, name) {
     if (module) {
         var moduleConfig = grapeData.config[module];
         if (name) {
-            return moduleConfig[name];
+            return moduleConfig[name] || {};
         }
         return moduleConfig;
     }
 
-    return '';
+    return {};
 };
 
 config.getConfig = config.getModuleConfig;
