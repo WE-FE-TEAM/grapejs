@@ -146,15 +146,18 @@ var App = function (_Base) {
 
             var controllerClass = this.getControllerClass(module, controllerKey);
 
+            var method = action + 'Action';
+
             if (controllerClass) {
-                var method = action + 'Action';
+
                 var obj = new controllerClass(this.http);
                 if (typeof obj[method] === 'function') {
                     return obj[method]();
                 }
             }
 
-            return _promise2.default.resolve();
+            //TODO 应该返回一个 404 错误
+            return _promise2.default.reject(new Error('[' + controllerKey + '][' + method + ']不存在!!'));
         }
     }], [{
         key: 'run',
