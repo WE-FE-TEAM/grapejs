@@ -178,8 +178,6 @@ var App = function (_Base) {
                 });
             }
 
-            var swigConf = grape.configManager.getConfig('swig');
-
             grape.viewManager.setViewEngine(app);
 
             var staticPrefix = grape.path.APP_URL_PREFIX + '/static';

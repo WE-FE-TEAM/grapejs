@@ -1,6 +1,6 @@
 {
   "name": "grapejs",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Node.js framework",
   "main": "dist/index.js",
   "scripts": {
@@ -24,7 +24,6 @@
     "fs-extra": "^0.27.0",
     "lodash": "^4.11.1",
     "node-ral": "^0.7.2",
-    "swig": "^1.4.2",
     "yog-bigpipe": "^0.3.0",
     "yog-swig": "^0.3.1",
     "yog-view": "^0.5.2"

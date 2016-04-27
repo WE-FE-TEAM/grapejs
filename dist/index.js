@@ -187,7 +187,7 @@ var GrapeIndex = function (_grape$Base) {
             //只提取 非. _ 开头的 JS 文件
             var arr = grape.util.getFiles(bootstrapDir, bootstrapDir + sep, function (file, isDir) {
 
-                return file[0] !== '.' && file[0] !== '_' && !isDir && /\.js$/.test(file);
+                return file[0] !== '.' && file[0] !== '_' && (!isDir && /\.js$/.test(file) || isDir);
             });
 
             arr.forEach(function (fileAboslutePath) {
