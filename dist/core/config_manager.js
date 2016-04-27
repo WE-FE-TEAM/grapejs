@@ -31,7 +31,7 @@ function loadDirFile(dir) {
     files.forEach(function (file) {
         var filePath = dir + sep + file;
         var stat = fs.statSync(filePath);
-        if (stat.isFile()) {
+        if (stat.isFile() && /\.js$/.test(file)) {
             var obj = path.parse(filePath);
             var fileName = obj.name;
             var data = require(filePath);

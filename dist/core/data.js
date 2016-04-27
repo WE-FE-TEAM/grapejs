@@ -34,4 +34,7 @@ grapeData.policy = {};
 //默认读取配置的module
 grapeData.defaultConfigModule = 'common';
 
+//存放所有的swig的filter配置
+grapeData.swigFilter = {};
+
 module.exports = grapeData;

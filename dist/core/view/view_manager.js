@@ -27,7 +27,9 @@ viewManager.setViewEngine = function (app) {
             }
         },
         tpl: {
-            cache: 'memory'
+            cache: 'memory',
+            //包含系统默认的和用户自定义的swig filter, 在应用启动阶段已经load好
+            filters: grapeData.swigFilter
         },
         engine: {
             tpl: 'yog-swig'

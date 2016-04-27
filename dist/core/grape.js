@@ -20,6 +20,7 @@ Object.defineProperty(global, 'grape', {
     enumerable: false
 });
 
+var fs = require('fs');
 var path = require('path');
 
 var GrapeBase = require('./base.js');
@@ -98,6 +99,34 @@ grape.tryRequire = function (absolutePath) {
         //TODO 记录下
         return null;
     }
+};
+
+/**
+ * 加载 path 目录下的所有.js文件, 忽略目录
+ * @param dir {string} 包含要加载JS的目录的绝对路径
+ * @returns {object} 以JS文件名作为key, JS的export作为value的JSON
+ */
+grape.loadJSInDir = function (dir) {
+
+    if (!grape.util.isDir(dir)) {
+        return {};
+    }
+
+    var out = {};
+
+    var files = fs.readdirSync(dir);
+    files.forEach(function (file) {
+        var filePath = dir + sep + file;
+        var stat = fs.statSync(filePath);
+        if (stat.isFile() && /\.js$/.test(file)) {
+            var obj = path.parse(filePath);
+            var fileName = obj.name.toLowerCase();
+            var data = require(filePath);
+            out[fileName] = data;
+        }
+    });
+
+    return out;
 };
 
 var TERMINATE_EXECUTE_FLAG = 'GRAPE_TERMINATE_REQUEST_EXECUTE_FLAG';

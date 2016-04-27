@@ -5,6 +5,10 @@
 
 'use strict';
 
+var _assign = require('babel-runtime/core-js/object/assign');
+
+var _assign2 = _interopRequireDefault(_assign);
+
 var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
 
 var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
@@ -194,6 +198,20 @@ var GrapeIndex = function (_grape$Base) {
                 require(fileAboslutePath);
             });
         }
+
+        //加载系统和应用的 swig filter 目录
+
+    }, {
+        key: 'loadSwigFilter',
+        value: function loadSwigFilter() {
+            var SWIG_FILTER_PATH = '' + grape.path.GRAPE_LIB_PATH + sep + 'swig-filter';
+            var systemFilter = grape.loadJSInDir(SWIG_FILTER_PATH);
+            var appCommonDir = grape.util.getAppModulePath(grape.path.APP_PATH, 'common');
+            var appFilterDir = '' + appCommonDir + sep + 'swig-filter';
+            var appFilter = grape.loadJSInDir(appFilterDir);
+            var finalFilter = (0, _assign2.default)({}, systemFilter, appFilter);
+            grapeData.swigFilter = finalFilter;
+        }
     }, {
         key: 'loadMiddleware',
         value: function loadMiddleware() {
@@ -220,6 +238,7 @@ var GrapeIndex = function (_grape$Base) {
             this.loadConfig();
             this.initLog();
             this.loadBootstrap();
+            this.loadSwigFilter();
             this.loadMiddleware();
             this.loadPolicy();
             this.loadRouter();
@@ -228,11 +247,7 @@ var GrapeIndex = function (_grape$Base) {
     }, {
         key: 'run',
         value: function run() {
-            //console.log( grapeData.modules );
-            //console.log( grapeData.config );
-            //console.log( grapeData.middleware );
-            //console.log( grapeData.controller );
-            //console.log( grapeData.router );
+
             grape.App.run();
         }
     }]);
