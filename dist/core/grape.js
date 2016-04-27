@@ -23,6 +23,8 @@ Object.defineProperty(global, 'grape', {
 var fs = require('fs');
 var path = require('path');
 
+var sep = path.sep;
+
 var GrapeBase = require('./base.js');
 var ControllerBase = require('./controller/base.js');
 var MiddlewareBase = require('./middleware_base.js');
