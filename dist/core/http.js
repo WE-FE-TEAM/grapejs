@@ -54,6 +54,7 @@ var Http = function (_GrapeBase) {
             this.controller = '';
             this.action = '';
             this.query = req.query;
+            this.originalUrl = req.originalUrl;
             this.path = req.path;
 
             //该请求的response是否已返回
