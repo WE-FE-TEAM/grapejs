@@ -41,8 +41,8 @@ singleton.load = function () {
                 var filePath = path.resolve(controllerPath, file);
                 var controllerKey = file.replace(/\.js$/, '');
 
-                //处理windows下目录分隔符问题, resolve 居然没有自动处理!!!
-                controllerKey = controllerKey.replace(/\//g, sep);
+                //处理windows下目录分隔符问题, resolve 自动把目录分隔符改成 \ 了, 导致URL匹配的时候,找不到, 需要统一改成linux的
+                controllerKey = controllerKey.split(sep).join('/');
 
                 map[controllerKey] = require(filePath);
             }
