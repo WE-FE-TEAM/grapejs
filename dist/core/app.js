@@ -209,7 +209,9 @@ var App = function (_Base) {
 
             function requestReceive(req, res, next) {
 
-                var http = new grape.Http(req, res);
+                var Http = grape.get('http');
+
+                var http = new Http(req, res);
                 var obj = new App(http);
                 obj.exec().catch(function (err) {
 
