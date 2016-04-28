@@ -40,6 +40,10 @@ singleton.load = function () {
             if (/\.js$/.test(file)) {
                 var filePath = path.resolve(controllerPath, file);
                 var controllerKey = file.replace(/\.js$/, '');
+
+                //处理windows下目录分隔符问题, resolve 居然没有自动处理!!!
+                controllerKey = controllerKey.replace(/\//g, sep);
+
                 map[controllerKey] = require(filePath);
             }
         });

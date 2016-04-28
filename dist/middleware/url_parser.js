@@ -158,6 +158,10 @@ var UrlParser = function (_grape$MiddlewareBase) {
             http.action = action;
             http.query = util.extend(http.query, querys);
 
+            if (!controller || !action) {
+                grape.log.warn('[url_parser]找不到URL[' + http.path + ']对应的controller[' + controller + ']或action[' + action + ']');
+            }
+
             return _promise2.default.resolve();
         }
     }, {
