@@ -54,6 +54,7 @@ var Http = function (_GrapeBase) {
             this.controller = '';
             this.action = '';
             this.query = req.query;
+            this.originalUrl = req.originalUrl;
             this.path = req.path;
 
             //该请求的response是否已返回
@@ -63,6 +64,9 @@ var Http = function (_GrapeBase) {
             this.locals = {
                 '$request': req
             };
+
+            //默认输出 html, utf-8
+            res.set('Content-Type', 'text/html; charset=utf-8');
         }
     }, {
         key: 'isEnd',
@@ -74,6 +78,11 @@ var Http = function (_GrapeBase) {
         value: function assign(key, value) {
             this.locals[key] = value;
             return this;
+        }
+    }, {
+        key: 'set',
+        value: function set(field, value) {
+            this.res.set(field, value);
         }
     }, {
         key: 'render',
@@ -109,6 +118,11 @@ var Http = function (_GrapeBase) {
                 }
             }
             return grape.prevent();
+        }
+    }, {
+        key: 'redirect',
+        value: function redirect(status, path) {
+            this.res.redirect(status, path);
         }
     }]);
     return Http;

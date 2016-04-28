@@ -86,29 +86,33 @@ var App = function (_Base) {
 
                             case 4:
                                 _context.next = 6;
-                                return this.execHook('policy_start');
+                                return this.requestCheck();
 
                             case 6:
                                 _context.next = 8;
-                                return this.execPolicy();
+                                return this.execHook('policy_start');
 
                             case 8:
                                 _context.next = 10;
-                                return this.execHook('policy_end');
+                                return this.execPolicy();
 
                             case 10:
                                 _context.next = 12;
-                                return this.execHook('controller_start');
+                                return this.execHook('policy_end');
 
                             case 12:
                                 _context.next = 14;
-                                return this.execController();
+                                return this.execHook('controller_start');
 
                             case 14:
                                 _context.next = 16;
-                                return this.execHook('controller_end');
+                                return this.execController();
 
                             case 16:
+                                _context.next = 18;
+                                return this.execHook('controller_end');
+
+                            case 18:
                             case 'end':
                                 return _context.stop();
                         }
@@ -122,6 +126,22 @@ var App = function (_Base) {
 
             return exec;
         }()
+
+        //检查请求是否OK
+
+    }, {
+        key: 'requestCheck',
+        value: function requestCheck() {
+            var http = this.http;
+
+            if (http.module && http.controller && http.action) {
+                return _promise2.default.resolve();
+            }
+
+            http.sendStatus(404);
+
+            return grape.prevent();
+        }
     }, {
         key: 'execPolicy',
         value: function execPolicy() {
@@ -189,7 +209,9 @@ var App = function (_Base) {
 
             function requestReceive(req, res, next) {
 
-                var http = new grape.Http(req, res);
+                var Http = grape.get('http');
+
+                var http = new Http(req, res);
                 var obj = new App(http);
                 obj.exec().catch(function (err) {
 

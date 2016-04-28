@@ -86,6 +86,22 @@ grape.logFactory = logFactory;
 //全局唯一的日志对象
 grape.log = null;
 
+//将一些对象暴露出去, 方便在具体应用中, 覆盖掉内部实现 //////////////
+
+var data = {
+    http: grapeHttp
+};
+
+grape.get = function (name) {
+    return data[name];
+};
+
+grape.set = function (name, value) {
+    data[name] = value;
+};
+
+/////////////////////////////////
+
 /**
  * 尝试加载给定JS的绝对路径, 找不到则报错
  * @param absolutePath {String} 要加载的JS文件的绝对路径
@@ -123,8 +139,8 @@ grape.loadJSInDir = function (dir) {
         if (stat.isFile() && /\.js$/.test(file)) {
             var obj = path.parse(filePath);
             var fileName = obj.name.toLowerCase();
-            var data = require(filePath);
-            out[fileName] = data;
+            var _data = require(filePath);
+            out[fileName] = _data;
         }
     });
 

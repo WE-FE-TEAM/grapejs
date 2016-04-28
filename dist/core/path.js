@@ -35,9 +35,5 @@ module.exports = {
     //应用的common模块
     APP_COMMON_MODULE_PATH: '',
     //应用的日志记录目录
-    APP_LOG_PATH: '',
-    //应用内使用的RAL请求后端服务的配置目录
-    APP_RAL_CONF_PATH: '',
-    //应用本地开发时,mock数据存放的目录
-    APP_MOCK_DATA_PATH: ''
+    APP_LOG_PATH: ''
 };
