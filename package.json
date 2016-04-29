@@ -1,6 +1,6 @@
 {
   "name": "grapejs",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "description": "Node.js framework",
   "main": "dist/index.js",
   "scripts": {
