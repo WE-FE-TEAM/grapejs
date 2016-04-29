@@ -158,8 +158,8 @@ var UrlParser = function (_grape$MiddlewareBase) {
             http.action = action;
             http.query = util.extend(http.query, querys);
 
-            if (!controller || !action) {
-                grape.log.warn('[url_parser]找不到URL[' + http.originalUrl + ']对应的controller[' + controller + ']或action[' + action + ']');
+            if (!module || !controller || !action) {
+                grape.log.warn('[url_parser]找不到URL[' + http.originalUrl + ']对应的module[' + module + ']或controller[' + controller + ']或action[' + action + ']');
             }
 
             return _promise2.default.resolve();
@@ -171,6 +171,12 @@ var UrlParser = function (_grape$MiddlewareBase) {
             var urlPath = http.path;
             var pos = urlPath.indexOf('/');
             var module = pos === -1 ? urlPath : urlPath.substr(0, pos);
+
+            if (module === 'common' || grapeData.modules.indexOf(module) < 0) {
+                //如果module不在合法的module列表中, 也要返回404
+                module = '';
+            }
+
             if (util.isEmpty(http.module)) {
                 http.path = http.path.substr(module.length + 1);
                 return module;

@@ -89,7 +89,8 @@ grape.log = null;
 //将一些对象暴露出去, 方便在具体应用中, 覆盖掉内部实现 //////////////
 
 var data = {
-    http: grapeHttp
+    http: grapeHttp,
+    controller_base: ControllerBase
 };
 
 grape.get = function (name) {

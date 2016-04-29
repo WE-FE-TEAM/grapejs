@@ -4,6 +4,10 @@
 
 'use strict';
 
+var _typeof2 = require('babel-runtime/helpers/typeof');
+
+var _typeof3 = _interopRequireDefault(_typeof2);
+
 var _assign = require('babel-runtime/core-js/object/assign');
 
 var _assign2 = _interopRequireDefault(_assign);
@@ -107,11 +111,31 @@ var Http = function (_GrapeBase) {
 
             if (!this._isEnd) {
 
+                httpStatus += '';
+
                 this.res.status(httpStatus);
-                var moduleConf = (0, _get3.default)((0, _getPrototypeOf2.default)(Http.prototype), 'getConfig', this).call(this, this.module, 'error') || {};
+                var moduleConf = (0, _get3.default)((0, _getPrototypeOf2.default)(Http.prototype), 'getConfig', this).call(this, this.module, 'page') || {};
                 var tplPath = moduleConf[httpStatus];
                 if (tplPath) {
-                    this.render(tplPath, data);
+
+                    //允许用户配置两种情况: 1. 配置模板的路径 2. 配置函数, 框架会调用
+                    var type = typeof tplPath === 'undefined' ? 'undefined' : (0, _typeof3.default)(tplPath);
+                    if (type === 'string') {
+                        //字符串, 代表模板路径, 直接渲染
+                        this.render(tplPath, data);
+                    } else if (type === 'function') {
+                        //函数, 调用函数, 传入 http 对象
+                        try {
+                            tplPath(this, httpStatus, data);
+                        } catch (e) {
+                            grape.log.error(e);
+                            this.res.sendStatus(httpStatus);
+                            this.end();
+                        }
+                    } else {
+                        this.res.sendStatus(httpStatus);
+                        this.end();
+                    }
                 } else {
                     this.res.sendStatus(httpStatus);
                     this.end();
