@@ -114,7 +114,8 @@ var Http = function (_GrapeBase) {
                 httpStatus += '';
 
                 this.res.status(httpStatus);
-                var moduleConf = (0, _get3.default)((0, _getPrototypeOf2.default)(Http.prototype), 'getConfig', this).call(this, this.module, 'page') || {};
+                //如果连module都没找到, 需要读取 common 下的配置
+                var moduleConf = (0, _get3.default)((0, _getPrototypeOf2.default)(Http.prototype), 'getConfig', this).call(this, this.module || 'common', 'page') || {};
                 var tplPath = moduleConf[httpStatus];
                 if (tplPath) {
 
