@@ -36,6 +36,11 @@ viewManager.setViewEngine = function (app) {
         }
     };
 
+    if (grape.util.isDev()) {
+        //开发模式, 关闭掉swig缓存
+        viewConf.tpl.cache = false;
+    }
+
     app.set('views', viewConf.viewsDir);
 
     app.fis = new mapjson.ResourceApi(viewConf.confDir);

@@ -607,8 +607,13 @@ var toFastProperties = function toFastProperties(obj) {
     new f();
 };
 
+//线上环境
 var ENV_PRODUCTION = 'production';
+//预发布环境
+var ENV_STAGE = 'stage';
+//QA测试环境
 var ENV_TEST = 'test';
+//本地开发
 var ENV_DEV = 'development';
 
 var getNodeEnv = function getNodeEnv() {
@@ -622,6 +627,9 @@ var getNodeEnv = function getNodeEnv() {
             break;
         case ENV_TEST:
             envName = ENV_TEST;
+            break;
+        case ENV_STAGE:
+            envName = ENV_STAGE;
             break;
         case ENV_PRODUCTION:
             envName = ENV_PRODUCTION;
