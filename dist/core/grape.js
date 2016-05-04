@@ -28,6 +28,7 @@ var sep = path.sep;
 var GrapeBase = require('./base.js');
 var ControllerBase = require('./controller/base.js');
 var MiddlewareBase = require('./middleware_base.js');
+var PolicyBase = require('./policy_base.js');
 var grapeUtil = require('./util.js');
 var grapePath = require('./path.js');
 
@@ -90,7 +91,8 @@ grape.log = null;
 
 var data = {
     http: grapeHttp,
-    controller_base: ControllerBase
+    controller_base: ControllerBase,
+    policy_base: PolicyBase
 };
 
 grape.get = function (name) {
