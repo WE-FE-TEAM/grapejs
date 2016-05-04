@@ -149,6 +149,14 @@ var Http = function (_GrapeBase) {
         value: function redirect(status, path) {
             this.res.redirect(status, path);
         }
+    }, {
+        key: 'json',
+        value: function json(data) {
+            if (!this._isEnd) {
+                this._isEnd = true;
+                this.res.json(data);
+            }
+        }
     }]);
     return Http;
 }(GrapeBase);
