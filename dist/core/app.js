@@ -225,7 +225,7 @@ var App = function (_Base) {
                         grape.log.error(err);
                     } else {
                         //开发环境, 直接打印输出 执行出错
-                        grape.console.log(err);
+                        grape.console.log(err.stack);
                         // grape.console.log(`出错: ${err.message}`);
                     }
 
