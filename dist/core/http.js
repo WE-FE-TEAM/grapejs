@@ -157,6 +157,16 @@ var Http = function (_GrapeBase) {
                 this.res.json(data);
             }
         }
+    }, {
+        key: 'e404',
+        value: function e404() {
+            this.sendStatus(404);
+        }
+    }, {
+        key: 'e500',
+        value: function e500() {
+            this.sendStatus(500);
+        }
     }]);
     return Http;
 }(GrapeBase);

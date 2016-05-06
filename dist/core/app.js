@@ -176,8 +176,9 @@ var App = function (_Base) {
                 }
             }
 
-            //TODO 应该返回一个 404 错误
-            return _promise2.default.reject(new Error('[' + controllerKey + '][' + method + ']不存在!!'));
+            //返回一个 404 错误
+            http.e404();
+            return grape.prevent();
         }
     }], [{
         key: 'run',
@@ -224,9 +225,11 @@ var App = function (_Base) {
                         grape.log.error(err);
                     } else {
                         //开发环境, 直接打印输出 执行出错
-                        res.end(err.stack);
+                        grape.console.log(err);
                         // grape.console.log(`出错: ${err.message}`);
                     }
+
+                    http.e500();
                 });
             }
             app.use(grape.path.APP_URL_PREFIX, requestReceive);
