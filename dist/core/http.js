@@ -159,13 +159,13 @@ var Http = function (_GrapeBase) {
         }
     }, {
         key: 'e404',
-        value: function e404() {
-            this.sendStatus(404);
+        value: function e404(data) {
+            this.sendStatus(404, data);
         }
     }, {
         key: 'e500',
-        value: function e500() {
-            this.sendStatus(500);
+        value: function e500(data) {
+            this.sendStatus(500, data);
         }
     }]);
     return Http;
