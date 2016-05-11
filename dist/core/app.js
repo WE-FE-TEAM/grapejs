@@ -201,7 +201,7 @@ var App = function (_Base) {
 
             grape.viewManager.setViewEngine(app);
 
-            var staticPrefix = grape.path.APP_URL_PREFIX + '/static';
+            var staticPrefix = grape.path.APP_STATIC_URL_PREFIX + '/static';
             app.use(staticPrefix, express.static(grape.path.APP_STATIC_PATH));
 
             app.use(cookieParser());
