@@ -152,7 +152,10 @@ var GrapeIndex = function (_grape$Base) {
             var APP_PATH = grape.path.APP_PATH;
 
             var logConfig = grape.configManager.getConfig('common', 'log') || {};
-            var logDir = path.normalize(logConfig.log_dir || APP_PATH + sep + 'log' + sep + 'app-log');
+            var logDir = path.normalize(logConfig.log_dir || APP_PATH + sep + 'log');
+
+            var appLogDir = logDir + sep + 'app-log';
+
             var finalStreams = [];
             var streams = logConfig.streams || [];
             streams.forEach(function (obj) {
@@ -160,7 +163,7 @@ var GrapeIndex = function (_grape$Base) {
                 if (obj.stream) {
                     finalStreams.push(obj);
                 } else if (obj.level) {
-                    var filePath = obj.path || path.normalize(logDir + sep + obj.level);
+                    var filePath = obj.path || path.normalize(appLogDir + sep + obj.level);
                     //如果文件不存在, 先创建
                     fse.ensureFileSync(filePath);
                     finalStreams.push({
