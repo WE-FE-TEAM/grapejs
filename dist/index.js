@@ -152,7 +152,7 @@ var GrapeIndex = function (_grape$Base) {
             var APP_PATH = grape.path.APP_PATH;
 
             var logConfig = grape.configManager.getConfig('common', 'log') || {};
-            var logDir = path.normalize(logConfig.log_dir || APP_PATH + sep + 'log');
+            var logDir = path.normalize(logConfig.log_dir || APP_PATH + sep + 'log' + sep + 'app-log');
             var finalStreams = [];
             var streams = logConfig.streams || [];
             streams.forEach(function (obj) {
