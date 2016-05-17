@@ -164,8 +164,9 @@ var Http = function (_GrapeBase) {
         }
     }, {
         key: 'e500',
-        value: function e500(data) {
-            this.sendStatus(500, data);
+        value: function e500(err) {
+            this.assign('grape_error', err);
+            this.sendStatus(500);
         }
     }]);
     return Http;

@@ -655,6 +655,11 @@ function isDev() {
     return getNodeEnv() === ENV_DEV;
 }
 
+//是否为线上环境
+function isProduction() {
+    return getNodeEnv() === ENV_PRODUCTION;
+}
+
 /**
  * 获取某个绝对路径 absolutePath 下包含的子目录, 排除掉 '.' '..'
  * @param absolutePath {String} 某个目录的绝对路径
@@ -728,6 +733,7 @@ module.exports = {
     datetime: datetime,
     getNodeEnv: getNodeEnv,
     isDev: isDev,
+    isProduction: isProduction,
     getSubDirectory: getSubDirectory,
     getAppModulePath: getAppModulePath
 };

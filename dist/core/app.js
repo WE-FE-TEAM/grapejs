@@ -229,7 +229,7 @@ var App = function (_Base) {
                         // grape.console.log(`出错: ${err.message}`);
                     }
 
-                    http.e500();
+                    http.e500(err);
                 });
             }
             app.use(grape.path.APP_URL_PREFIX, requestReceive);
@@ -252,6 +252,8 @@ var App = function (_Base) {
                 }
                 //process.exit(1);
             });
+
+            grape.console.log('当前运行环境 NODE_ENV= ' + grape.util.getNodeEnv());
         }
     }]);
     return App;
