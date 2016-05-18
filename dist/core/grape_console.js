@@ -15,7 +15,7 @@ var singleton = {
         if (IS_DEV !== null) {
             return IS_DEV;
         }
-        IS_DEV = grape.util.getNodeEnv() === 'development';
+        IS_DEV = !grape.util.isProduction();
         return IS_DEV;
     },
 

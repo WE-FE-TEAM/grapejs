@@ -48,6 +48,8 @@ var App = require('./app.js');
 
 var logFactory = require('./grape_log.js');
 
+var grapeBunyan = require('./bunyan/index.js');
+
 //开发时,不直接使用 console, 使用 grape.console
 grape.console = grapeConsole;
 
@@ -86,6 +88,9 @@ grape.logFactory = logFactory;
 
 //全局唯一的日志对象
 grape.log = null;
+
+//暴露到全局上, 方便在应用层使用
+grape.bunyanUtil = grapeBunyan;
 
 //将一些对象暴露出去, 方便在具体应用中, 覆盖掉内部实现 //////////////
 
