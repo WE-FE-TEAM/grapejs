@@ -4,6 +4,10 @@
 
 'use strict';
 
+var _assign = require('babel-runtime/core-js/object/assign');
+
+var _assign2 = _interopRequireDefault(_assign);
+
 var _promise = require('babel-runtime/core-js/promise');
 
 var _promise2 = _interopRequireDefault(_promise);
@@ -46,6 +50,7 @@ var cluster = require('cluster');
 var express = require('express');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session');
 
 var Base = require('./base.js');
 
@@ -207,6 +212,27 @@ var App = function (_Base) {
             app.use(cookieParser());
             app.use(bodyParser.json()); // for parsing application/json
             app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+
+            //配置session
+            var sessionConf = grape.configManager.getConfig('session');
+            if (sessionConf) {
+                //应用打开了session
+                var conf = (0, _assign2.default)({
+                    name: 'grapesid',
+                    proxy: undefined,
+                    resave: false,
+                    rolling: false,
+                    saveUninitialized: false,
+                    secret: '',
+                    unset: 'keep',
+                    cookie: {
+                        secure: false,
+                        maxAge: null
+                    }
+                }, sessionConf);
+
+                app.use(session(conf));
+            }
 
             function requestReceive(req, res, next) {
 
