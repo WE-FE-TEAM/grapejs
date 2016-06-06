@@ -147,6 +147,10 @@ var Http = function (_GrapeBase) {
     }, {
         key: 'redirect',
         value: function redirect(status, path) {
+            if (arguments.length < 2) {
+                path = status;
+                status = 302;
+            }
             this.res.redirect(status, path);
         }
     }, {
