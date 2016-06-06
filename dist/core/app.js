@@ -215,7 +215,7 @@ var App = function (_Base) {
 
             //配置session
             var sessionConf = grape.configManager.getConfig('session');
-            if (sessionConf) {
+            if (sessionConf && !grape.util.isEmpty(sessionConf) && sessionConf.store) {
                 //应用打开了session
                 var conf = (0, _assign2.default)({
                     name: 'grapesid',
