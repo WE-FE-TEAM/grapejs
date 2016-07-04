@@ -181,6 +181,8 @@ var App = function (_Base) {
                 }
             }
 
+            grape.log.info('[execController]找不到module[' + module + ']controller[' + controllerKey + ']action[' + action + ']');
+
             //返回一个 404 错误
             http.e404();
             return grape.prevent();
