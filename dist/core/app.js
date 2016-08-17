@@ -212,8 +212,11 @@ var App = function (_Base) {
             app.use(staticPrefix, express.static(grape.path.APP_STATIC_PATH));
 
             app.use(cookieParser());
-            app.use(bodyParser.json()); // for parsing application/json
-            app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+
+            var limit = serverConf.limit || '100kb';
+
+            app.use(bodyParser.json({ limit: limit })); // for parsing application/json
+            app.use(bodyParser.urlencoded({ extended: true, limit: limit })); // for parsing application/x-www-form-urlencoded
 
             //配置session
             var sessionConf = grape.configManager.getConfig('session');

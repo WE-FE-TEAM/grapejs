@@ -118,11 +118,12 @@ grape.tryRequire = function (absolutePath) {
 
     try {
         if (!path.isAbsolute(absolutePath)) {
+            console.warn('tryRequire 只能加载  绝对路径的 JS:  [' + absolutePath + '] 文件!!');
             return null;
         }
         return require(absolutePath);
     } catch (e) {
-        //TODO 记录下
+        console.warn('require [' + absolutePath + '] 文件异常!!');
         return null;
     }
 };
