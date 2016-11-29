@@ -67,7 +67,6 @@ var UrlParser = function (_grape$MiddlewareBase) {
          *  Todo : url错误, module Controller等不存在的异常情况处理
          */
         value: function execute(options) {
-            //console.log('UrlParser execute start');
             var http = this.http,
                 req = http.req;
             if (!req.path) {
@@ -91,7 +90,6 @@ var UrlParser = function (_grape$MiddlewareBase) {
     }, {
         key: 'parseRouter',
         value: function parseRouter(routers) {
-            //console.log('UrlParser parseRouter start');
             var http = this.http,
                 path = http.path;
             for (var _module in routers) {
@@ -141,21 +139,17 @@ var UrlParser = function (_grape$MiddlewareBase) {
     }, {
         key: 'parseUrlPath',
         value: function parseUrlPath() {
-            //console.log('UrlParser parseUrlPath start');
-
             this._stripSlash();
 
             var http = this.http;
 
             var module = this.getModule();
-            var controller = this.getController();
-            var action = this.getAction();
-            var querys = this.getQuery();
-            //console.log(http.path);
-            //console.log(module, controller, action, querys);
             http.module = module;
+            var controller = this.getController();
             http.controller = controller;
+            var action = this.getAction();
             http.action = action;
+            var querys = this.getQuery();
             http.query = util.extend(http.query, querys);
 
             if (!module || !controller || !action) {
@@ -192,8 +186,8 @@ var UrlParser = function (_grape$MiddlewareBase) {
                 return '';
             }
             var moduleControllers = grapeData.controller;
-            for (var _module2 in moduleControllers) {
-                var controllers = moduleControllers[_module2];
+            if (http.module) {
+                var controllers = moduleControllers[http.module];
                 for (var controllerKey in controllers) {
                     if (urlPath == controllerKey || urlPath.indexOf(controllerKey + '/') == 0) {
                         http.path = http.path.substr(controllerKey.length + 1);
@@ -234,7 +228,6 @@ var UrlParser = function (_grape$MiddlewareBase) {
     }, {
         key: '_getQuery',
         value: function _getQuery(path) {
-            //console.log('UrlParser _getQuery start');
             var params = {},
                 urlTokens = path.split('/');
             if (!util.isEmpty(path)) {
