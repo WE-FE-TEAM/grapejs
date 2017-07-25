@@ -142,7 +142,6 @@ var Http = function (_GrapeBase) {
                     this.end();
                 }
             }
-            return grape.prevent();
         }
     }, {
         key: 'redirect',
