@@ -47,11 +47,11 @@ var UrlRewrite = function (_grape$MiddlewareBase) {
             var http = this.http;
             var pos = http.path.indexOf(grape.path.APP_URL_PREFIX);
             //console.log('UrlRewrite execute start ', http.path, grape.path.APP_URL_PREFIX);
-            if (pos === 0) {
+            if (pos === 0 && grape.path.APP_URL_PREFIX !== '/' && grape.path.APP_URL_PREFIX) {
                 http.path = http.path.substr(grape.path.APP_URL_PREFIX.length);
                 //console.log(http.path);
             }
-            _promise2.default.resolve();
+            return _promise2.default.resolve();
         }
     }]);
     return UrlRewrite;
