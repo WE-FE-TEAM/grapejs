@@ -1,6 +1,6 @@
 {
   "name": "grapejs",
-  "version": "2.1.2",
+  "version": "2.1.3",
   "description": "Node.js framework",
   "main": "lib/index.js",
   "scripts": {
